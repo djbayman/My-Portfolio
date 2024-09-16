@@ -15,7 +15,6 @@ import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
 import { json } from '@remix-run/cloudflare';
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import emailjs from '@emailjs/browser';
 import styles from './contact.module.css';
 
@@ -29,70 +28,7 @@ export const meta = () => {
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
-const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
-
-// export async function action({ context, request }) {
-//   const ses = new SESClient({
-//     region: 'us-east-1',
-//     credentials: {
-//       accessKeyId: context.cloudflare.env.AWS_ACCESS_KEY_ID,
-//       secretAccessKey: context.cloudflare.env.AWS_SECRET_ACCESS_KEY,
-//     },
-//   });
-
-//   const formData = await request.formData();
-//   const isBot = String(formData.get('name'));
-//   const email = String(formData.get('email'));
-//   const message = String(formData.get('message'));
-//   const errors = {};
-
-//   // Return without sending if a bot trips the honeypot
-//   if (isBot) return json({ success: true });
-
-//   // Handle input validation on the server
-//   if (!email || !EMAIL_PATTERN.test(email)) {
-//     errors.email = 'Please enter a valid email address.';
-//   }
-
-//   if (!message) {
-//     errors.message = 'Please enter a message.';
-//   }
-
-//   if (email.length > MAX_EMAIL_LENGTH) {
-//     errors.email = `Email address must be shorter than ${MAX_EMAIL_LENGTH} characters.`;
-//   }
-
-//   if (message.length > MAX_MESSAGE_LENGTH) {
-//     errors.message = `Message must be shorter than ${MAX_MESSAGE_LENGTH} characters.`;
-//   }
-
-//   if (Object.keys(errors).length > 0) {
-//     return json({ errors });
-//   }
-
-//   // Send email via Amazon SES
-//   await ses.send(
-//     new SendEmailCommand({
-//       Destination: {
-//         ToAddresses: [context.cloudflare.env.EMAIL],
-//       },
-//       Message: {
-//         Body: {
-//           Text: {
-//             Data: `From: ${email}\n\n${message}`,
-//           },
-//         },
-//         Subject: {
-//           Data: `Portfolio message from ${email}`,
-//         },
-//       },
-//       Source: `Portfolio <${context.cloudflare.env.FROM_EMAIL}>`,
-//       ReplyToAddresses: [email],
-//     })
-//   );
-
-//   return json({ success: true });
-// }
+// const EMAIL_PATTERN = /(.+)@(.+){2,}\.(.+){2,}/;
 
 export const Contact = () => {
   const formRef = useRef();
@@ -103,30 +39,9 @@ export const Contact = () => {
   const actionData = useActionData();
   const { state } = useNavigation();
   const sending = state === 'submitting';
-  const errors = {};
 
   const sendEmail = e => {
     e.preventDefault();
-    // // Handle input validation on the server
-    // if (!email || !EMAIL_PATTERN.test(email)) {
-    //   errors.email = 'Please enter a valid email address.';
-    // }
-
-    // if (!message) {
-    //   errors.message = 'Please enter a message.';
-    // }
-
-    // if (email.length > MAX_EMAIL_LENGTH) {
-    //   errors.email = `Email address must be shorter than ${MAX_EMAIL_LENGTH} characters.`;
-    // }
-
-    // if (message.length > MAX_MESSAGE_LENGTH) {
-    //   errors.message = `Message must be shorter than ${MAX_MESSAGE_LENGTH} characters.`;
-    // }
-
-    // if (Object.keys(errors).length > 0) {
-    //   return json({ errors });
-    // }
 
     emailjs
       .sendForm('service_8n07c36', 'template_9f3x11v', formRef.current, {
@@ -140,7 +55,6 @@ export const Contact = () => {
           console.log('FAILED...', error.text);
         }
       );
-    return json({ success: true });
   };
 
   return (
