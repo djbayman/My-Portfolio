@@ -1,13 +1,7 @@
-import gamestackTexture2Large from '~/assets/realtor.png';
-import gamestackTexture2Placeholder from '~/assets/realtor.png';
-import gamestackTexture2 from '~/assets/realtor.png';
-import gamestackTextureLarge from '~/assets/realtor.png';
-import gamestackTexturePlaceholder from '~/assets/realtor.png';
-import gamestackTexture from '~/assets/realtor.png';
-import cryptoImg from '~/assets/crypto.png';
-import sliceTextureLarge from '~/assets/gymrats.png';
-import sliceTexturePlaceholder from '~/assets/gymrats.png';
-import sliceTexture from '~/assets/gymrats.png';
+import gamestackTexturePlaceholder from '~/assets/buyLi.png';
+import sliceTexture3ersi from '~/assets/3ersi.png';
+import sliceTextureMaystrong from '~/assets/maystrong-app.png';
+import sliceTextureEvalClass from '~/assets/evalClass.png';
 import sprTextureLarge from '~/assets/inv.png';
 import sprTexturePlaceholder from '~/assets/inv.png';
 import sprTexture from '~/assets/inv.png';
@@ -55,10 +49,11 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const projectFour = useRef();
+  const projectFive = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, projectFive,  details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -105,10 +100,71 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Inventory Managment System"
-        description="Designing a platform to help business owener to manage his transactions.           Tech Stack: React/TailwindCss/Firebase"
+        title="3ersi.com"
+        description="3ersi.com is Algeria’s leading wedding planning guide, offering couples the tools, knowledge, and access to trusted vendors to plan their wedding from start to finish. The platform provides curated offers and resources to make wedding organization simple, efficient, and enjoyable."
         buttonText="View project"
-        buttonLink="https://inventory-managment-9mvlx3nb2-aymanes-projects-27be667b.vercel.app/"
+        buttonLink="https://3ersi.com"
+        model={{
+          type: 'laptop',
+          alt: 'IMS',
+          textures: [
+            {
+              srcSet: `${sliceTexture3ersi} 1280w, ${sliceTexture3ersi} 2560w`,
+              placeholder: sliceTexture3ersi,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-2"
+        alternate
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
+        title="Maystrong.com"
+        description="MayStrong is a sports and wellness platform in Algeria that connects users with gyms, fitness centers, wellness hubs, and sporting events. It helps individuals discover activities, follow training programs, and access healthy lifestyle resources, while giving providers visibility to an engaged community."
+        buttonText="View project"
+        buttonLink="https://maystrong-app.com/"
+        model={{
+          type: 'laptop',
+          alt: 'IMS',
+          textures: [
+            {
+              srcSet: `${sliceTextureMaystrong} 1280w, ${sliceTextureMaystrong} 2560w`,
+              placeholder: sliceTextureMaystrong,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
+        title="EvalClass.com"
+        description="EvalClass is an evaluation platform designed to create, manage, and analyze assessments in any field. It provides a flexible and structured way to conduct evaluations, collect feedback, and generate insights efficiently."
+        buttonText="View project"
+        buttonLink="https://evalclass.com/"
+        model={{
+          type: 'laptop',
+          alt: 'IMS',
+          textures: [
+            {
+              srcSet: `${sliceTextureEvalClass} 1280w, ${sliceTextureEvalClass} 2560w`,
+              placeholder: sliceTextureEvalClass,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="Inventory Managment System"
+        description="A web-based inventory management system designed to track, organize, and manage products efficiently. The platform provides real-time inventory visibility, simplifies stock control, and improves operational accuracy.           Tech Stack: React/TailwindCss/Firebase"
+        buttonText="View project"
+        buttonLink="https://inventory-managment-seven.vercel.app/"
         model={{
           type: 'laptop',
           alt: 'IMS',
@@ -121,66 +177,22 @@ export const Home = () => {
         }}
       />
       <ProjectSummary
-        id="project-2"
+        id="project-5"
         alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
-        title="Website for real estate"
-        description="Realtor is a platform where you can purchase or rent apartments, houses, and
-various types of properties. Tech Stack: React/TailwindCss/RESTful API"
+        sectionRef={projectFive}
+        visible={visibleSections.includes(projectFive.current)}
+        index={5}
+        title="Buy-Li"
+        description="Buy-Li is an e-commerce website designed to provide a smooth and secure online shopping experience. The platform allows users to browse products, manage orders, and complete purchases efficiently through an intuitive and user-friendly interface.           Tech Stack: React - TailwindCSS - Sanity - Stripe - Express.js"
         buttonText="View website"
-        buttonLink="https://realtor-r235zuww2-aymanes-projects-27be667b.vercel.app/"
+        buttonLink="https://buyliecomm.vercel.app/"
         model={{
           type: 'laptop',
           alt: 'Realtor',
           textures: [
             {
-              srcSet: `${gamestackTexturePlaceholder} 1280w, ${gamestackTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Gym Rats"
-        description="Gym-rats is a fitness website designed to help you get in shape. It offers a
-wide range of exercises. Tech Stack: React/TailwindCss/RESTful API"
-        buttonText="View project"
-        buttonLink="https://gym-rats-iiry2kwo2-aymanes-projects-27be667b.vercel.app/"
-        model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
-            {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="project-4"
-        alternate
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
-        index={4}
-        title="Crypto Universe"
-        description="CryptoVerse is your go-to source for the latest updates on the currency market. Tech Stack: React/TailwindCss/RESTful API
-"
-        buttonText="View website"
-        buttonLink="https://crypto-verse-8vjvm6piu-aymanes-projects-27be667b.vercel.app/"
-        model={{
-          type: 'laptop',
-          alt: 'Crypto',
-          textures: [
-            {
-              srcSet: `${cryptoImg} 1280w, ${cryptoImg} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${gamestackTexturePlaceholder} 1280w, ${gamestackTexturePlaceholder} 2560w`,
+              placeholder: gamestackTexturePlaceholder,
             },
           ],
         }}

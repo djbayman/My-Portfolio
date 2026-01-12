@@ -13,7 +13,7 @@ import { useFormInput } from '~/hooks';
 import { useRef } from 'react';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
-import { Form, useActionData, useNavigation } from '@remix-run/react';
+import { Form, useActionData, useNavigate, useNavigation } from '@remix-run/react';
 import { json } from '@remix-run/cloudflare';
 import emailjs from '@emailjs/browser';
 import styles from './contact.module.css';
@@ -25,6 +25,10 @@ export const meta = () => {
       'Send me a message if you’re interested in discussing a project or if you just want to say hi',
   });
 };
+
+export async function action({ request }) {
+  return json({ success: true });
+}
 
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
@@ -39,17 +43,23 @@ export const Contact = () => {
   const actionData = useActionData();
   const { state } = useNavigation();
   const sending = state === 'submitting';
+  const navigate = useNavigate();
 
   const sendEmail = e => {
     e.preventDefault();
 
-    emailjs
-      .sendForm('service_8n07c36', 'template_9f3x11v', formRef.current, {
-        publicKey: 'uR1swwtUgJfTb1zeX',
-      })
+      emailjs.sendForm(
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    formRef.current,
+    {
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    }
+  )
       .then(
         () => {
           console.log('SUCCESS!');
+          navigate("/");
         },
         error => {
           console.log('FAILED...', error.text);

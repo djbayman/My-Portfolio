@@ -17,10 +17,26 @@ export const Monogram = forwardRef(({ highlight, className, ...props }, ref) => 
       {...props}
     >
       <defs>
-        <clipPath id={clipId}>
-          <path d="M0 0h6.5a6 6 0 0 1 5.2 3.1L19.4 17l4-9L19 0h6.5a6 6 0 0 1 5.2 3.1L39.5 19 35 29 24.5 10 16 29 0 0Zm46.7 2.8A2 2 0 0 0 45 0h-7l5.5 10 3.2-7.2Z" />
-        </clipPath>
-      </defs>
+  <clipPath id={clipId}>
+    <path d="
+  M24 0
+  L44 29
+  H36
+  L30 20
+  H18
+  L12 29
+  H4
+  Z
+
+  M19.5 15
+  H28.5
+  L24 8.5
+  Z
+" />
+
+  </clipPath>
+</defs>
+
       <rect clipPath={`url(#${clipId})`} width="100%" height="100%" />
       {highlight && (
         <g clipPath={`url(#${clipId})`}>
