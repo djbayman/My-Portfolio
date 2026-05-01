@@ -9,11 +9,12 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "node ./scripts/dev.cjs && remix vite:dev",
-    "start": "npx wrangler pages dev ./build/client",
+    "start": "npm run build && wrangler pages dev ./build/client",
     "postinstall": "node ./scripts/draco.cjs",
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
-    "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main"
+    "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main",
+    "deploy": "npm run build && wrangler pages deploy ./build/client --project-name my-portfolio"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.515.0",
