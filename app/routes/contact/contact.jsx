@@ -15,7 +15,7 @@ import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
 import { Form, useActionData, useNavigation } from '@remix-run/react';
 import { json } from '@remix-run/cloudflare';
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+// import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import emailjs from '@emailjs/browser';
 import styles from './contact.module.css';
 
@@ -129,8 +129,8 @@ export const Contact = () => {
     // }
 
     emailjs
-      .sendForm('service_8n07c36', 'template_9f3x11v', formRef.current, {
-        publicKey: 'uR1swwtUgJfTb1zeX',
+      .sendForm(import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, formRef.current, {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       })
       .then(
         () => {
