@@ -17,22 +17,24 @@ import styles from './profile.module.css';
 
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
-    <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
-      <DecoderText text="Hi there" start={visible} delay={500} />
-    </Heading>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Hamish, currently I live in Sydney working as a senior product designer at{' '}
-      <Link href="https://www.qwilr.com">Qwilr</Link>. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
-    </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice Brazilian Jiu Jitsu, play video games, and{' '}
-      <Link href="/projects/volkihar-knight">make mods</Link>. I’m always down for hearing
-      about new projects, so feel free to drop me a line.
-    </Text>
-  </Fragment>
+  <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
+    <DecoderText text="Hi there" start={visible} delay={500} />
+  </Heading>
+
+  <Text className={styles.description} data-visible={visible} size="l" as="p">
+    I’m Ayman, a web developer passionate about building modern, responsive,
+    and user-friendly digital experiences. I work with technologies like React,
+    Next.js, JavaScript, and TypeScript to create fast and scalable web applications
+    focused on clean design and smooth user interaction.
+  </Text>
+
+  <Text className={styles.description} data-visible={visible} size="l" as="p">
+    My projects range from wedding and event platforms to fitness and wellness
+    applications, where I focus on crafting intuitive interfaces and transforming
+    ideas into real products. I enjoy learning new technologies, improving my skills,
+    and working on creative projects that deliver meaningful user experiences.
+  </Text>
+</Fragment>
 );
 
 export const Profile = ({ id, visible, sectionRef }) => {

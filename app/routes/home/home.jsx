@@ -7,9 +7,19 @@ import gamestackTexture from '~/assets/gamestack-login.jpg';
 import sliceTextureLarge from '~/assets/slice-app-large.jpg';
 import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
 import sliceTexture from '~/assets/slice-app.jpg';
-import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
-import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
+import sprTextureLarge from '~/assets/3ersi-project-large.png';
+import sprTexturePlaceholder from '~/assets/3ersi-project-large.png';
+import sprTexture from '~/assets/3ersi-project-large.png';
+
+import sprTextureLarge2 from '~/assets/maystrong-project-large.png';
+import sprTexturePlaceholder2 from '~/assets/maystrong-project-large.png';
+import sprTexture2 from '~/assets/maystrong-project-large.png';
+import sprTextureLarge3 from '~/assets/evaclass-project-large.png';
+import sprTexturePlaceholder3 from '~/assets/evaclass-project-large.png';
+import sprTexture3 from '~/assets/evaclass-project-large.png';
+import sprTextureLarge4 from '~/assets/akevents-project-large.png';
+import sprTexturePlaceholder4 from '~/assets/akevents-project-large.png';
+import sprTexture4 from '~/assets/akevents-project-large.png';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -53,10 +63,11 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -103,13 +114,13 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="3ersi"
+        description="Responsible for developing  experience for a wedding planning platform that helps couples organize their events and discover the best wedding services, vendors, and event solutions in one place."
         buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        buttonLink="https://3ersi.com"
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: '3ersi.com website',
           textures: [
             {
               srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
@@ -120,14 +131,35 @@ export const Home = () => {
       />
       <ProjectSummary
         id="project-2"
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
+        alternate={2}
+        title="MayStrong-app"
+        description="Developing the experience for a fitness and wellness platform that helps users discover gyms, wellness centers, and fitness services to support their health and lifestyle goals."
+        buttonText="View project"
+        buttonLink="https://maystrong-app.com"
+        model={{
+          type: 'laptop',
+          alt: 'MayStrong-app website',
+          textures: [
+            {
+              srcSet: `${sprTexture2} 1280w, ${sprTextureLarge2} 2560w`,
+              placeholder: sprTexturePlaceholder2,
+            },
+          ],
+        }}
+      />
+      {/* <ProjectSummary
+        id="project-2"
         alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
+        title="MayStrong-app"
+        description="Developing the experience for a fitness and wellness platform that helps users discover gyms, wellness centers, and fitness services to support their health and lifestyle goals."
         buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        buttonLink="https://maystrong-app.com"
         model={{
           type: 'phone',
           alt: 'App login screen',
@@ -142,23 +174,44 @@ export const Home = () => {
             },
           ],
         }}
-      />
+      /> */}
       <ProjectSummary
         id="project-3"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
         title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
+        description="Responsible for developing the frontend experience for a fast, secure, and high-performance evaluation platform that allows users to create and manage evaluations across different fields on both web and mobile platforms."
         buttonText="View project"
-        buttonLink="/projects/slice"
+        buttonLink="https://evalclass.com/"
         model={{
           type: 'laptop',
           alt: 'Annotating a biomedical image in the Slice app',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${sprTexture3} 1280w, ${sprTextureLarge3} 2560w`,
+              placeholder: sprTexturePlaceholder3,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-4"
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        alternate={4}
+        title="Akevents"
+        description="Developing a fullstack platform for creating and managing events, with a focus on user engagement and seamless event organization."
+        buttonText="View project"
+        buttonLink="https://akeventsdz.com"
+        model={{
+          type: 'laptop',
+          alt: 'Akevents website',
+          textures: [
+            {
+              srcSet: `${sprTexture4} 1280w, ${sprTextureLarge4} 2560w`,
+              placeholder: sprTexturePlaceholder4,
             },
           ],
         }}
