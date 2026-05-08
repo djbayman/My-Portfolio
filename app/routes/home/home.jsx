@@ -180,13 +180,13 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
+        title="EvalClass"
         description="Responsible for developing the frontend experience for a fast, secure, and high-performance evaluation platform that allows users to create and manage evaluations across different fields on both web and mobile platforms."
         buttonText="View project"
         buttonLink="https://evalclass.com/"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'EvalClass evaluation platform',
           textures: [
             {
               srcSet: `${sprTexture3} 1280w, ${sprTextureLarge3} 2560w`,
